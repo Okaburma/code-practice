@@ -1,0 +1,11 @@
+# Ignore node_modules folder
+node_modules/
+.vscode/
+# Ignore .sh files
+*.sh
+
+# Other common files/folders to ignore
+.DS_Store
+*.log
+npm-debug.log*
+.env

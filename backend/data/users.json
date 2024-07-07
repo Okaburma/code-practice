@@ -1,0 +1,18 @@
+[
+  {
+    "email": "a@bb.com",
+    "password": "$2a$10$7RQNgoWqTO9SiKCu43YfCeTZgZI99J2y.DwLjTUk5UDm5n2.QZ9CK"
+  },
+  {
+    "email": "b@bb.com",
+    "password": "$2a$10$kTV/cC2i2Lhh9evizWZDjuyygnIk4ajzKQ1G7W9d1fgY6Yf8mH1Q."
+  },
+  {
+    "email": "c@bb.com",
+    "password": "$2a$10$waYu97mt1KDxC96FpaIwO.XSlSpRTQmFyTGXryCT5hJZvFugqk.Yy"
+  },
+  {
+    "email": "d@bb.com",
+    "password": "$2a$10$OCn97O.AM8uDXPJVaDjEGujoxF0/XAeojDxxaO0/7H56kn67pMgv."
+  }
+]
