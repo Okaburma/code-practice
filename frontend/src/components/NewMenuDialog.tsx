@@ -1,4 +1,5 @@
 import {
+  Alert,
   Box,
   Button,
   CircularProgress,
@@ -6,12 +7,14 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Snackbar,
   TextField,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { NewMenuParams } from "../types/menu";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { createMenu } from "../store/slices/menuSlice";
+import { showSnackbar } from "../store/slices/AppSnackbarSlice";
 
 interface Props {
   open: boolean;
@@ -27,7 +30,27 @@ const NewMenuDialog = ({ open, setOpen, newMenu, setNewMenu }: Props) => {
   const handleCreateMenu = () => {
     const isValid = newMenu.name;
     if (!isValid) return;
-    dispatch(createMenu(newMenu));
+    dispatch(
+      createMenu({
+        ...newMenu,
+        onSuccess: () => {
+          dispatch(
+            showSnackbar({
+              type: "success",
+              message: "Menu created successfully",
+            })
+          );
+        },
+        onError: () => {
+          dispatch(
+            showSnackbar({
+              type: "error",
+              message: "Error occurred when creating Menu",
+            })
+          );
+        },
+      })
+    );
   };
 
   return (

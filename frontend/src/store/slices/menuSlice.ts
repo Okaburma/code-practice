@@ -10,13 +10,15 @@ const initialState: MenuSlice = {
 export const createMenu = createAsyncThunk(
   "menu/createMenu",
   async (newMenuParam: NewMenuParams) => {
+    const { onSuccess, ...payload } = newMenuParam;
     const response = await fetch("http://localhost:5000/menu", {
       headers: { "content-type": "application/json" },
       method: "POST",
-      body: JSON.stringify({ ...newMenuParam }),
+      body: JSON.stringify(payload),
     });
     const dataFromServer = await response.json();
     const { menus } = dataFromServer;
+    onSuccess && onSuccess();
     return menus;
   }
 );

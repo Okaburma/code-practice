@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import React, { ReactNode } from "react";
 import TopBar from "./TopBar";
 import SideBar from "./SideBar";
+import AppSnackbar from "./AppSnackbar";
 
 interface Props {
   children: ReactNode;
@@ -16,6 +17,7 @@ const Layout = ({ children }: Props) => {
         {accessToken && <SideBar />}
         <Box sx={{ bgcolor: "#FF8F00", width: "100%", p: 5 }}>{children}</Box>
       </Box>
+      <AppSnackbar/>
     </Box>
   );
 };

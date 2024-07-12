@@ -55,6 +55,7 @@ const Register = () => {
           />
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Button
+              disabled={!newUser.email || !newUser.password}
               variant="contained"
               sx={{ width: "fit-content", bgcolor: "#26355D" }}
               onClick={() =>

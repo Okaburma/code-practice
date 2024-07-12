@@ -1,29 +1,31 @@
-import { LoginUserParam, RegisterUserParam } from "./../../types/user";
+import { LoginUserParam, RegisterUserParam, User, UserSlice } from "./../../types/user";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-interface User {
-  name: string;
-  email: string;
-}
+// interface User {
+//   name: string;
+//   email: string;
+// }
 
-interface UserSlice {
-  user: User | null;
-  isLoading: boolean;
-  error: Error | null;
-}
+// interface UserSlice {
+//   user: User | null;
+//   isLoading: boolean;
+//   error: Error | null;
+// }
 
 const initialState: UserSlice = {
   user: null,
   isLoading: false,
   error: null,
 };
+
 export const registerUser = createAsyncThunk(
   "user/registerUser",
   async (registerUserParam: RegisterUserParam, thunkAPI) => {
+    const {email,password} = registerUserParam;
     const response = await fetch("http://localhost:5000/register", {
       headers: { "content-type": "application/json" },
       method: "POST",
-      body: JSON.stringify(registerUserParam),
+      body: JSON.stringify({email,password}),
     });
     registerUserParam.onSuccess && registerUserParam.onSuccess();
   }
@@ -54,5 +56,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const {} = userSlice.actions;
+export const {setUser} = userSlice.actions;
 export default userSlice.reducer;
